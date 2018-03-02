@@ -75,7 +75,8 @@ router.post('/login', (req, res, next) => {
 });
 
 router.get('/logout', (req, res, next) => {
-    if (req.session) {
+    console.log(req.session.userId);
+    if (req.session.userId) {
         // delete session object
         req.session.destroy(err => {
             if (err) {

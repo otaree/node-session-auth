@@ -21,9 +21,15 @@ app.use(session({
     secret: 'work hard',
     resave: true,
     saveUninitialized: false,
+    cookie: {
+        path: "/",
+        maxAge: 1800000 // 30 mins
+    },
     store: new MongoStore({
-        mongooseConnection: db
-    })
+        mongooseConnection: db,
+        ttl: (1 * 60 * 60)
+    }),
+    name: "id"
 }));
 
 
